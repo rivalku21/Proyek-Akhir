@@ -1,0 +1,35 @@
+.resultPage h1 {
+    font-size: 30px;
+    margin-top: 20px;
+    margin-left: 30px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.resultCheck button {
+    height: 40px;
+    width: 200px;
+    border-radius: 20px;
+    margin: 10px;
+    border: 2px solid white;
+}
+
+.resultCheck {
+    margin: auto;
+    text-align: center;
+}
+.percentResult h1 {
+    font-size: 40px;
+    font-weight: 600;
+}
+.percentResult span {
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+}
+.percentResult hr {
+    border-top: 2px solid white;
+    margin: -15px 0 20px 10px;
+
+}

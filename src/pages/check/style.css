@@ -1,0 +1,33 @@
+.checkPage h1 {
+    font-size: 30px;
+    margin-top: 20px;
+    margin-left: 30px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.textWrapper {
+    height: 500px;
+    overflow-y: scroll;
+}
+.textWrapper p {
+    color: black;
+    font-size: 14px;
+}
+
+.buttonCheck {
+    margin: auto;
+}
+
+.buttonCheck button {
+    height: 40px;
+    width: 200px;
+    border-radius: 20px;
+    margin: 10px;
+}
+
+.buttonCheck p {
+    font-size: 10px;
+    margin-left: 0px;
+}

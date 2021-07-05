@@ -1,0 +1,23 @@
+.file-upload input {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 5px;
+    border: 1px solid white;
+    border-radius: 5px;
+    cursor: pointer;
+    overflow: hidden;
+    width: 300px;
+}
+
+.file-upload button {
+    border-radius: 10px;
+}
+
+.body-part h1 {
+    font-size: 45px;
+    font-weight: bold;
+}
+
+.body-part p {
+    font-size:x-large;
+}
