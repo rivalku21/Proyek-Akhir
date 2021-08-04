@@ -6,5 +6,8 @@ export default {
     LECTURE: '/lecture',
     FILEDATA: (id) => {
         return `/data/${id}`
+    },
+    SEARCH: (q) => {
+        return `/search?q=${q}`
     }
 }

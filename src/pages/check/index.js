@@ -5,12 +5,17 @@ import { Link, useLocation } from 'react-router-dom';
 import { useHistory } from 'react-router';
 import BaseService from '../../services/baseService';
 import API from '../../config/rest';
+import { Loading } from '../../component';
 
 const Check = () => {
     const location = useLocation();
     const data = location.state;
     const [isLoading, setLoading] = useState(false);
     const history = useHistory();
+
+    const display = Array.prototype.map.call(data.data.split(" "), function(item) {
+        return item + ' ';
+    })
 
     const dataCheck = {
         file: data.data,
@@ -22,7 +27,7 @@ const Check = () => {
         setLoading(true);
 
         BaseService.post(API.CHECK, dataCheck).then((res) => {
-            console.log(res);
+            // console.log(res);
 
             setLoading(false);
 
@@ -31,10 +36,17 @@ const Check = () => {
                 state:{
                     filename: res.filename,
                     result: res.result,
+                    doc: res.doc,
                     data: data.data
                 }
             })
         })
+    }
+
+    if (isLoading) {
+        return (
+            <Loading />
+        )
     }
 
     return(
@@ -44,7 +56,7 @@ const Check = () => {
                 <div className="col-sm-9">
                     <Card className="textWrapper">
                         <Card.Body className="scroll">
-                            <p>{data.data}</p>
+                            <span>{display}</span>
                         </Card.Body>
                     </Card>
                 </div>

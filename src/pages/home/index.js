@@ -3,6 +3,7 @@ import BaseService from '../../services/baseService';
 import API from '../../config/rest'
 import './Home.css';
 import { useHistory } from 'react-router';
+import { Loading } from '../../component';
 
 const Home = () => {
     // window.location.reload();
@@ -15,7 +16,6 @@ const Home = () => {
     const handleChange = (e) => {
         setLoading(false)
         const file = e.target.files[0];
-        console.log(file);
         setFile(file);
     }
 
@@ -26,18 +26,6 @@ const Home = () => {
         setLoading(true);
 
         BaseService.post(API.UPLOAD, formData).then((res) => {
-            // res.JSON({
-            //     path: res.data.path,
-            //     data: res.data.data
-            // })
-            // setData({
-            //     path: res.path,
-            //     data: res.data
-            // })
-            // history.push({pathname:"/uploads", state: dataFile});
-            // setLoading(false);
-            // window.location.replace('/uploads');
-
             setLoading(false);
 
             history.push({
@@ -48,6 +36,16 @@ const Home = () => {
                 }
             })
         })
+    }
+    if (isLoading) {
+        // setTimeout(() => {
+        //     alert("your document is not supported by the system or has too many words, try the original document");
+        //     window.location.replace('/');
+        // }, 50000);
+
+        return (
+            <Loading />
+        )
     }
 
     return (

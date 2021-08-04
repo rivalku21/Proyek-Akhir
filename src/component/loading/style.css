@@ -1,3 +1,8 @@
 .loading {
-    font-weight: 900;
+    font-weight: 800;
+    color: white;
+    text-align: center;
+    font-size: 50px;
+    margin-top: auto;
+    margin-bottom: auto;
   }

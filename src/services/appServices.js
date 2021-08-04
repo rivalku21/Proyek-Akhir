@@ -13,10 +13,15 @@ const lectureList = () => {
     return BaseService.get(API.LECTURE);
 }
 
+const search = (q) => {
+    return BaseService.get(API.SEARCH(q));
+}
+
 const appServices = {
     getAllData,
     getDataId,
     lectureList,
+    search,
 }
 
 export default appServices;

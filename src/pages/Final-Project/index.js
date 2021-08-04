@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Container, Card } from 'react-bootstrap';
 import { appServices } from '../../services';
 import './final_project.css';
-import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Modal, ModalHeader, ModalBody, ModalFooter, Input } from 'reactstrap';
 import { Button, FormGroup } from 'react-bootstrap';
 import pdffile from '../../img/pdflogo.png'
 
@@ -32,13 +32,23 @@ const Final_Project = () => {
         return setModalDetail(!modalDetail);
     }
 
+    var inputSearch = (e) => {
+        const value = e.target.value;
+        if (e.keyCode === 13) {
+            e.preventDefault();
+            appServices.search(value).then((result) => {
+                setData(result.data);
+            });
+        }
+    }
+
     return (
         <div className="finalBody">
             <h1>OUR PROUD PROJECT</h1>
             <Container>
                 <div>
-                    <input className="search" type="text" placeholder="Search"></input>
-                    <Button variant="secondary" size="sm" style={{marginLeft:'10px'}}>Search</Button>
+                    <Input id="inputSearchId" className="search" type="text" placeholder="Search" style={{width:'40%', margin:'auto', display:'inline-block'}} onKeyUp={inputSearch} />
+                    {/* <Button style={{marginLeft:'10px',display:'inline-block'}}>Search</Button> */}
                 </div>
                 <Card className="cardData" style={{width:'100%', height:'100%', color:'black', top:'20px'}}>
                     <Card.Body className="cardBody">
@@ -46,21 +56,22 @@ const Final_Project = () => {
                             <div className="col-sm-1" />
                             <div className="col-sm-10">
                                 <table>
-                                    <tr>
+                                    <tr style={{ marginBottom: '10px'}}>
                                         <th width="50%">Title</th>
                                         <th width="35%">Author</th>
                                         <th width="15%">Year</th>
                                         <th></th>
                                     </tr>
-                                    {dataFinal.map((data) => {
+                                    {dataFinal.map((data, key) => {
                                         return (
-                                            <tr>
-                                                <td>{data.title}</td>
-                                                <td>{data.author}</td>
+                                            // <p>{data}</p>
+                                            <tr key={key}>
+                                                <td><div style={{ width: '98%', marginBottom: '10px' }}>{data.title}</div></td>
+                                                <td><div style={{ width: '98%' }}>{data.author}</div></td>
                                                 <td>{data.year}</td>
-                                                {/* <td> */}
+                                                <td>
                                                     <Button className="btnDetail" id={data.id} variant="outline" onClick={toggleDetail}>Detail</Button>
-                                                {/* </td> */}
+                                                </td>
                                             </tr>
                                         )
                                     })}
@@ -72,7 +83,7 @@ const Final_Project = () => {
                 <div>
                     <Modal isOpen={modalDetail} toggle={toggleDetail} className="modal-xl">
                         <ModalHeader toogle={toggleDetail}>
-                            <b>Proposal Detail</b>
+                            <b>Final Project Detail</b>
                         </ModalHeader>
                         <ModalBody>
                             <FormGroup>
@@ -136,7 +147,7 @@ const Final_Project = () => {
                             </FormGroup>
                         </ModalBody>
                         <ModalFooter className="footer">
-                            <Button>Download</Button>
+                            <Button><a href={detail.path} target="_blank" style={{ textDecoration: 'none', color: 'white' }}>Download</a></Button>
                             <Button onClick={toggleDetail} variant="outline-secondary">
                                 Cancel
                             </Button>

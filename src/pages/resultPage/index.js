@@ -10,7 +10,16 @@ import { appServices, uploads } from '../../services';
 const ResultPage = () =>{
     const location = useLocation();
     const data = location.state;
-    const checking = data.result <= 30;
+    const checking = data.result <= 50;
+
+    const word = data.data.split(" ");
+
+    const objek = Object.entries(word);
+    const arrayFormat = objek.map(entry => Object.assign({'word': entry[1]}));
+
+    // const display = Array.prototype.map.call(data.data, function(item) {
+    //     return item + ' ';
+    // })
 
     const [lectureList, setLectureList] = useState([]);
 
@@ -47,7 +56,8 @@ const ResultPage = () =>{
         uploads(dataPost)
         // console.log(dataPost)
         .finally(() => {
-            toggleSave();
+            // toggleSave();
+            window.location.replace('/');
         });
         setDataPost({});
     }
@@ -60,7 +70,14 @@ const ResultPage = () =>{
                     <div className="col-sm-9">
                         <Card className="textWrapper">
                             <Card.Body className="scroll">
-                                <p>{data.data}</p>
+                                {arrayFormat.map((word) => {
+                                    const y = data.doc.includes(word.word.toLowerCase().replace(/[^a-z0-9 ]/g,""))
+                                    if (y) {
+                                        return <span className={word.word} style={{backgroundColor: 'red', color: 'white'}}>{word.word} </span>
+                                    } else {
+                                        return <span className={word.word}>{word.word} </span>
+                                    }
+                                })}
                             </Card.Body>
                         </Card>
                     </div>
@@ -143,11 +160,12 @@ const ResultPage = () =>{
                                                                 onChange={changeHandler}
                                                             >
                                                                 <option>Choose Lecture</option>
-                                                                {lectureList.map((data) => {
+                                                                {lectureList.map((data, i) => {
                                                                     return(
-                                                                        <option value={data.name}>{data.name} ({data.dosen_code})</option>
+                                                                        <option value={data[0]}>{data[0]} ({data[1]})</option>
                                                                     )
                                                                 })}
+                                                                <option>Other</option>
                                                             </Form.Control>
                                                         </FormGroup>
                                                     </td>
@@ -165,9 +183,10 @@ const ResultPage = () =>{
                                                                 <option>Choose Lecture</option>
                                                                 {lectureList.map((data) => {
                                                                     return(
-                                                                        <option value={data.name}>{data.name} ({data.dosen_code})</option>
+                                                                        <option value={data[0]}>{data[0]} ({data[1]})</option>
                                                                     )
                                                                 })}
+                                                                <option>Other</option>
                                                             </Form.Control>
                                                         </FormGroup>
                                                     </td>
@@ -219,7 +238,14 @@ const ResultPage = () =>{
                     <div className="col-sm-9">
                         <Card className="textWrapper">
                             <Card.Body className="scroll">
-                                <p>{data.data}</p>
+                                {arrayFormat.map((word) => {
+                                    const y = data.doc.includes(word.word.toLowerCase().replace(/[^a-z0-9 ]/g,""))
+                                    if (y) {
+                                        return <span className={word.word} style={{backgroundColor: 'red', color: 'white'}}>{word.word} </span>
+                                    } else {
+                                        return <span className={word.word}>{word.word} </span>
+                                    }
+                                })}
                             </Card.Body>
                         </Card>
                     </div>
