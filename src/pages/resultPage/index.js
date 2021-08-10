@@ -10,7 +10,7 @@ import { appServices, uploads } from '../../services';
 const ResultPage = () =>{
     const location = useLocation();
     const data = location.state;
-    const checking = data.result <= 50;
+    const checking = data.result <= 60;
 
     const word = data.data.split(" ");
 
