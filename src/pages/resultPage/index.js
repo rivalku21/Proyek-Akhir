@@ -84,7 +84,6 @@ const ResultPage = () =>{
                     <div className="resultCheck col-sm-3">
                         <div className="percentResult">
                             <h1 style={{display:'inline-block'}}>{data.result}</h1><span> % Indicated</span>
-                            <hr />
                         </div>
                         <Button className="btn btn-success" onClick={toggleSave}><b>Save</b></Button>
                         <div><p>You're safe, click the safe button to save the file to the database.</p></div>
@@ -252,7 +251,6 @@ const ResultPage = () =>{
                     <div className="resultCheck col-sm-3">
                         <div className="percentResult">
                             <h1 style={{display:'inline-block'}}>{data.result}</h1><span> % Indicated</span>
-                            <hr />
                         </div>
                         <Button onClick={backHome} className="btn btn-danger"><b>Danger</b></Button>
                         <div><p>Sorry you're danger, we can't forward your files to our database</p></div>
