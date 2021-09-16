@@ -1,0 +1,16 @@
+.data {
+    text-align: left;
+    font-size: 18px;
+    color: #8B8B8B;
+}
+.buttonLogin {
+    text-align: right;
+    margin-top: 5%;
+    border-radius: 24px;
+    width: 100%;
+    margin-bottom: 3%;
+}
+.footer {
+    text-align: right;
+    font-size: small;
+}

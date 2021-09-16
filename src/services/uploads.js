@@ -5,4 +5,8 @@ const uploads = (saveData) => {
     return BaseService.post(API.SAVE, saveData);
 };
 
-export default uploads ;
+const register = (saveData) => {
+    return BaseService.post(API.REGISTER, saveData);
+}
+
+export default {uploads, register};

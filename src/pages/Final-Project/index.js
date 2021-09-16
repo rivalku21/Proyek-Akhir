@@ -5,6 +5,7 @@ import './final_project.css';
 import { Modal, ModalHeader, ModalBody, ModalFooter, Input } from 'reactstrap';
 import { Button, FormGroup } from 'react-bootstrap';
 import pdffile from '../../img/pdflogo.png'
+import { Header } from '../../component';
 
 const Final_Project = () => {
     const [modalDetail, setModalDetail] = useState(false);
@@ -43,6 +44,8 @@ const Final_Project = () => {
     }
 
     return (
+        <>
+        <Header />
         <div className="finalBody">
             <h1>OUR PROUD PROJECT</h1>
             <Container>
@@ -147,7 +150,7 @@ const Final_Project = () => {
                             </FormGroup>
                         </ModalBody>
                         <ModalFooter className="footer">
-                            <Button><a href={detail.path} target="_blank" style={{ textDecoration: 'none', color: 'white' }}>Download</a></Button>
+                            {/* <Button><a href={detail.path} target="_blank" style={{ textDecoration: 'none', color: 'white' }}>Download</a></Button> */}
                             <Button onClick={toggleDetail} variant="outline-secondary">
                                 Cancel
                             </Button>
@@ -156,6 +159,7 @@ const Final_Project = () => {
                 </div>
             </Container>
         </div>
+        </>
     )
 }
 

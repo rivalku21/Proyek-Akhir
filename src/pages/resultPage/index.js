@@ -6,11 +6,12 @@ import { Modal, ModalBody, ModalFooter, Input } from 'reactstrap';
 import ModalHeader from 'react-bootstrap/esm/ModalHeader';
 import pdffile from '../../img/pdflogo.png'
 import { appServices, uploads } from '../../services';
+import { Header } from '../../component';
 
 const ResultPage = () =>{
     const location = useLocation();
     const data = location.state;
-    const checking = data.result <= 60;
+    const checking = data.result <= 50;
 
     const word = data.data.split(" ");
 
@@ -64,6 +65,8 @@ const ResultPage = () =>{
 
     if (checking) {
         return(
+            <>
+            <Header />
             <div className="container resultPage">
                 <h1>PLAGIARISM CHECKER</h1>
                 <div className="row">
@@ -228,9 +231,12 @@ const ResultPage = () =>{
                     </Modal>
                 </div>
             </div>
+            </>
         )
     } else {
         return(
+            <>
+            <Header />
             <div className="container resultPage">
                 <h1>PLAGIARISM CHECKER</h1>
                 <div className="row">
@@ -256,7 +262,8 @@ const ResultPage = () =>{
                         <div><p>Sorry you're danger, we can't forward your files to our database</p></div>
                     </div>
                 </div>
-            </div>   
+            </div> 
+            </>  
         )
     }
 }

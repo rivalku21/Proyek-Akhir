@@ -5,7 +5,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { useHistory } from 'react-router';
 import BaseService from '../../services/baseService';
 import API from '../../config/rest';
-import { Loading } from '../../component';
+import { Header, Loading } from '../../component';
 
 const Check = () => {
     const location = useLocation();
@@ -50,6 +50,8 @@ const Check = () => {
     }
 
     return(
+        <>
+        <Header />
         <div className="container checkPage">
             <h1>PLAGIARISM CHECKER</h1>
             <div className="row">
@@ -68,6 +70,7 @@ const Check = () => {
                 </div>
             </div>
         </div>
+        </>
     )
 }
 

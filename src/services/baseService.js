@@ -1,11 +1,20 @@
 import axios from 'axios';
+import { getCookie } from '../utils/cookie';
+
+function getTokenAuth() {
+    if (getCookie('token')) {
+      return JSON.parse(getCookie('token'));
+    }
+    return '';
+}
 
 const createAxiosInterceptor = (url) => {
     const axiosCreate = axios.create({
         baseURL: url,
         headers: {
             Accept: 'application/json',
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${getTokenAuth()}`,
         },
     });
     axiosCreate.interceptors.response.use(

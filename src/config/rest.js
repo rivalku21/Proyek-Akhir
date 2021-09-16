@@ -1,4 +1,6 @@
 export default {
+    LOGIN: '/login',
+    REGISTER: '/register',
     DATA: '/data',
     UPLOAD: '/uploads',
     CHECK: '/check',
